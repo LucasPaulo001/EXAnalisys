@@ -4,7 +4,8 @@ const userRouter = express.Router();
 //Rotas
 import { 
     register,
-    login
+    login,
+    getCurrentUser
 } from "../controllers/UserController.mjs";
 
 //Middlewares
@@ -19,5 +20,7 @@ import validate from "../middlewares/handleValidation.mjs";
 //Config. de rotas
 userRouter.post('/register', userRegisterValidations(), validate, register);
 userRouter.post('/login', userLoginValidations(), validate, login);
+userRouter.get('/profile', authGuard, getCurrentUser);
 
 export default userRouter;
+

@@ -77,3 +77,10 @@ export const login = async (req, res) => {
         res.status(500).json({ errors: ["Erro interno do servidor!"] });
     }
 }
+
+//Pegando dados de usuários logado
+export const getCurrentUser = async (req, res) => {
+    const user = req.user;
+    console.log(user);
+    res.status(200).json(user);
+}
