@@ -15,20 +15,21 @@ export default function Home() {
 
                     <View>
                         <Image
-                            style={styles.imgLogo} 
+                            style={styles.imgLogo}
                             source={logo}
                         />
                     </View>
 
                     <Text style={styles.txtDescription}>
-                        Com o EXAnalisys você terá total controle e organização de seus gastos de forma simples
+                        Com o EXAnalisys você terá total controle e organização de seus gastos de forma
+                        simples
                         e organizada!
                     </Text>
 
                     <View style={styles.contentInit}>
                         <Text style={styles.txt}>Se conecte e começe a se organizar!</Text>
-                        <Link 
-                        href="/LoginScreen" asChild>
+                        <Link
+                            href="/LoginScreen" asChild>
                             <TouchableOpacity
                                 style={styles.btnGo}
                             >
@@ -36,6 +37,11 @@ export default function Home() {
                             </TouchableOpacity>
                         </Link>
                     </View>
+                    <Link href="/Home">
+                        <Text style={styles.by}>
+                            By Lucas Paulo
+                        </Text>
+                    </Link>
                 </View>
             </ImageBackground>
         </>
@@ -82,7 +88,7 @@ const styles = StyleSheet.create({
         resizeMode: 'cover',
         height: "100%",
         width: "100%",
-        justifyContent: 'center', 
+        justifyContent: 'center',
         alignItems: 'center'
     },
 
@@ -108,6 +114,19 @@ const styles = StyleSheet.create({
     imgLogo: {
         height: 150,
         width: 150
+    },
+
+    by: {
+        fontSize: 18,
+        textAlign: "center",
+        color: "#092B48",
+        fontWeight: "bold",
+        backgroundColor: "#CEE8FF",
+        borderRadius: 15,
+        bottom: 65,
+        padding: 20,
+        opacity: .6,
+        position: "absolute"
     }
 })
 

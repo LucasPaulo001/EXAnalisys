@@ -38,8 +38,8 @@ export default function LoginScreen() {
     return (
         // Formulário
         <KeyboardAvoidingView
-            behavior={Platform.OS === 'ios' ? 'padding' : 'height'} // 'height' funciona melhor no Android
-            keyboardVerticalOffset={Platform.OS === 'ios' ? 80 : 0} // ajustar se houver header
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            keyboardVerticalOffset={Platform.OS === 'ios' ? 80 : 0}
         >
 
             <ScrollView contentContainerStyle={styles.container}>
