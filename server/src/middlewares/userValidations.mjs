@@ -49,3 +49,25 @@ export const userLoginValidations = () => {
     ]
 }
 
+//Validação para adição de gastos
+export const user_Add_Expense_Validation = () => {
+    return[
+        body("value")
+        .trim()
+        .notEmpty()
+        .withMessage("O campo do valor é obrigatório!"),
+
+        body("description")
+        .optional(),
+
+        body("category")
+        .isString()
+        .withMessage("O campo de categoria é obrigatório!"),
+
+        body("date")
+        .notEmpty()
+        .withMessage("O campo da data é obrigatório!")
+
+    ]
+}
+
