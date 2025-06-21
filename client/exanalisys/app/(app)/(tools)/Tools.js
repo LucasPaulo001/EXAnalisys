@@ -9,28 +9,49 @@ export default function Tool(){
     return(
         <View>
             <View style={styles.containerTools}>
-                <Link href="/Add" asChild>
+
+                {/* Botão para adicionar gastos */}
+                <View style={styles.localBotton}>
+                    <Link href="/Add" asChild>
+                        <TouchableOpacity
+                            style={styles.botton}
+                        >
+                            <Ionicons name="add-circle" size={50} color="#36C8F6" />
+                        </TouchableOpacity>
+                    </Link>
+                    <Text style={styles.txt}>Add Gastos</Text>
+                </View>
+
+                {/* Botão para ver dashboard */}
+                <View style={styles.localBotton}>
                     <TouchableOpacity
                         style={styles.botton}
                     >
-                        <Ionicons name="add-circle" size={50} color="#36C8F6" />
+                        <Entypo name="area-graph" size={50} color="#199BE2" />
                     </TouchableOpacity>
-                </Link>
-                <TouchableOpacity
-                    style={styles.botton}
-                >
-                    <Entypo name="area-graph" size={50} color="#199BE2" />
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.botton}
-                >
-                    <FontAwesome name="list-ul" size={50} color="#ADD9FF" />
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.botton}
-                >
-                    <Ionicons name="settings" size={50} color="#8FCAE6" />
-                </TouchableOpacity>
+                    <Text style={styles.txt}>Dados </Text>
+                </View>
+
+                {/* Botão para ver a lista de gastos */}
+                <View style={styles.localBotton}>
+                    <Link href="/ListExpenses" asChild>
+                        <TouchableOpacity
+                            style={styles.botton}
+                        >
+                            <FontAwesome name="list-ul" size={50} color="#ADD9FF" />
+                        </TouchableOpacity>
+                    </Link>
+                    <Text style={styles.txt}>Lista de Gastos</Text>
+                </View>
+
+                <View style={styles.localBotton}>
+                    <TouchableOpacity
+                        style={styles.botton}
+                    >
+                        <Ionicons name="settings" size={50} color="#8FCAE6" />
+                    </TouchableOpacity>
+                    <Text style={styles.txt}>Config.</Text>
+                </View>
             </View>
         </View>
     )

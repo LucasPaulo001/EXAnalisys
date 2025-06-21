@@ -107,7 +107,7 @@ export const AuthProvider = ({ children }) => {
     const addBalance = async (totalBalance) => {
         const editUserAPI = 'https://exanalisys.onrender.com/api/users/edit-user';
 
-        try{
+        try {
 
             const res = await fetch(editUserAPI, {
                 method: 'PUT',
@@ -120,7 +120,7 @@ export const AuthProvider = ({ children }) => {
 
             const data = await res.json();
 
-            if(!res.ok){
+            if (!res.ok) {
                 setError("Erro ao adicionar saldo!")
             }
 
@@ -129,6 +129,57 @@ export const AuthProvider = ({ children }) => {
             await getUser();
 
             return true;
+
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
+    //Adicionar gastos
+    const addExpenses = async (
+        value,
+        category,
+        description,
+        paymentMethod,
+        date
+    ) => {
+
+        const addExpensesAPI = 'https://exanalisys.onrender.com/api/users/add-expense';
+
+        try {
+            const res = await fetch(addExpensesAPI, {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({ value, category, description, paymentMethod, date })
+            });
+
+            const data = await res.json();
+
+            console.log(data)
+
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+    //Listar gastos
+    const listExpenses = async () => {
+        const listAPI = 'https://exanalisys.onrender.com/api/users/list-expenses';
+
+        try{
+
+            const res = await fetch(listAPI, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-type': 'application/json'
+                },
+                
+            })
 
         }
         catch(err){
@@ -160,7 +211,7 @@ export const AuthProvider = ({ children }) => {
     })
 
     useEffect(() => {
-        if(token){
+        if (token) {
             getUser();
         }
     }, [token]);
@@ -176,7 +227,8 @@ export const AuthProvider = ({ children }) => {
             loading,
             token,
             usuario,
-            addBalance
+            addBalance,
+            addExpenses
         }}>
 
             {children}
