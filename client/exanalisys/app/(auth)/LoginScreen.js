@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Login_Register.styles";
 import {
     View,
@@ -8,14 +8,16 @@ import {
     Image,
     Platform,
     ScrollView,
-    KeyboardAvoidingView
+    KeyboardAvoidingView,
+    Alert
 
 } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import icon from "../../assets/iconLoginReg.png";
-import { Link } from "expo-router";
+import { Link, Redirect, router } from "expo-router";
+import { useAuth } from "../../contexts/authContext";
 
 //Validações
 const schema = yup.object().shape({
@@ -31,8 +33,30 @@ export default function LoginScreen() {
     } = useForm({ resolver: yupResolver(schema) });
 
 
-    const onSubmit = (data) => {
-        alert("Olá " + data.email)
+    //Pegando funções do contexto
+    const { login, toke, error } = useAuth();
+
+    //Caso já tenha token, redireciona para a home
+    useEffect(() => {
+        if (toke) {
+            <Redirect href="/Home"/>
+        }
+    }, []);
+
+
+
+    //Função para submit de login
+    const onSubmit = async (data) => {
+        const result = await login(data.email, data.password);
+
+        if (result.success) {
+            router.replace("/Home");
+        }
+        else {
+            Alert.alert("Erro", "E-mail ou senha inválidos");
+        }
+
+        console.log(result.success);
     }
 
     return (
@@ -41,7 +65,6 @@ export default function LoginScreen() {
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             keyboardVerticalOffset={Platform.OS === 'ios' ? 80 : 0}
         >
-
             <ScrollView contentContainerStyle={styles.container}>
                 <View style={styles.localIcon}>
                     <Image

@@ -44,7 +44,7 @@ export const styles = StyleSheet.create({
         overflow: "hidden"
     },
     cardIcon: {
-        height: 85,
+        height: 110,
         marginTop: 50,
         backgroundColor: "#2C3A42",
         width: "90%",
@@ -61,6 +61,13 @@ export const styles = StyleSheet.create({
         paddingTop: 10,
         borderBottomColor: "#FCFFB1",
         borderBottomWidth: 1,
-        padding: 5
+        padding: 5,
+        flexDirection: "column"
+    },
+    bottom:{
+        textAlign: "center",
+        alignContent: "center",
+        alignItems: "center",
+        padding: 10
     }
 })

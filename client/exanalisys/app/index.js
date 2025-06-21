@@ -1,9 +1,12 @@
 import { View, Text, StyleSheet, Button, Image, ImageBackground, TouchableOpacity } from "react-native";
-import { Link } from "expo-router"
+import { Link, Redirect } from "expo-router"
 import img from "../assets/background.png"
 import logo from "../assets/logo.png"
+import { useAuth } from "../contexts/authContext";
+import { useEffect } from "react";
 
 export default function Home() {
+
     return (
         <>
             <ImageBackground
