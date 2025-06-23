@@ -2,9 +2,9 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     containerHome: {
+        height: "100%",
         alignItems: "center",
-        alignContent: "center",
-        justifyContent: "center",
+        alignContent: "flex-start",
     },
     cardTop: {
         backgroundColor: "#0F5FA6",
@@ -64,7 +64,7 @@ export const styles = StyleSheet.create({
         padding: 5,
         flexDirection: "column"
     },
-    bottom:{
+    bottom: {
         textAlign: "center",
         alignContent: "center",
         alignItems: "center",

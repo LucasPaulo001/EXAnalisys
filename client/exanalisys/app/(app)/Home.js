@@ -9,17 +9,21 @@ import { useAuth } from "../../contexts/authContext";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Modal from "./(modal)/Modal";
 import { useState } from "react";
+import Menu from "../../components/menu/Menu";
+import LoadingSpinner from "../../components/menu/Loading";
+import CardData from "./(cardData)/CardData";
+import { ScrollView } from "react-native";
 
 export default function Home() {
 
-    const { token, loading, usuario } = useAuth();
+    const { token, loading, usuario, totalPercent } = useAuth();
     const [open, setOpen] = useState(null);
 
     if (loading) return null;
 
     if (!token) return <Redirect href="/LoginScreen" />
 
-    
+
 
     return (
         <View>
@@ -36,54 +40,74 @@ export default function Home() {
                 source={imgBackground}
             >
 
-                <View style={styles.containerHome}>
-                    <View style={styles.cardTop}>
-                        <Image
-                            source={logo}
-                            style={styles.imgLogo}
+                <ScrollView style={{
+                    maxHeight: "80%"
+                }}>
+                    <View style={styles.containerHome}>
+                        <View style={styles.cardTop}>
+                            <Image
+                                source={logo}
+                                style={styles.imgLogo}
+                            />
+                            <View style={styles.msg}>
+                                <View>
+                                    <Text style={styles.msgText}>
+                                        Olá, {usuario.username}. O que deseja analisar hoje?</Text>
+                                </View>
+                                <View>
+                                    <Image
+                                        style={styles.img}
+                                        source={imgCard}
+                                    />
+                                </View>
+                            </View>
+                            <View style={styles.localCardIcon}>
+                                <View style={styles.cardIcon}>
+                                    <Text style={styles.text}>
+                                        Saldo disponível: R$ {
+                                            loading ?
+                                                (
+                                                    <LoadingSpinner />
+                                                ) : (
+                                                    totalPercent || usuario.totalBalance
+                                                )}
+                                    </Text>
+                                    <TouchableOpacity
+                                        style={styles.bottom}
+                                    >
+                                        <Text style={{ color: "white" }}>Adicionar Saldo</Text>
+                                        <Ionicons
+                                            onPress={() => setOpen(true)}
+                                            name="add-circle" size={35} color="#36C8F6" />
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        </View>
+                        <Modal
+                            open={open}
+                            setOpen={setOpen}
                         />
-                        <View style={styles.msg}>
-                            <View>
-                                <Text style={styles.msgText}>
-                                    Olá, {usuario.username}. O que deseja analisar hoje?</Text>
-                            </View>
-                            <View>
-                                <Image
-                                    style={styles.img}
-                                    source={imgCard}
-                                />
-                            </View>
+                        <View>
+                            <Tool />
                         </View>
-                        <View style={styles.localCardIcon}>
-                            <View style={styles.cardIcon}>
-                                <Text style={styles.text}>
-                                    Saldo disponível: R$ {usuario.totalBalance}
 
-                                </Text>
-
-                                <TouchableOpacity
-                                    style={styles.bottom}
-                                >
-                                    <Text style={{color: "white"}}>Adicionar Saldo</Text>
-                                    <Ionicons 
-                                    onPress={() => setOpen(true)}
-                                    name="add-circle" size={35} color="#36C8F6" />
-                                </TouchableOpacity>
-
-                            </View>
+                        <View>
+                            <CardData />
                         </View>
-                    </View>
 
-                    <Modal  
-                        open={open}
-                        setOpen={setOpen}
-                    />
 
-                    <View>
-                        <Tool />
                     </View>
+                </ScrollView>
+                <View style={{
+                    position: "absolute",
+                    bottom: 80,
+                    width: "100%",
+                    padding: 15
+                }}>
+                    <Menu />
                 </View>
             </ImageBackground>
         </View>
+
     )
 }

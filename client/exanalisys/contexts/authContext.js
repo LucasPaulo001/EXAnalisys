@@ -9,6 +9,8 @@ export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(null);
     const [loading, setLoading] = useState(true);
     const [usuario, setUsuario] = useState({});
+    const [expenses, setExpenses] = useState([]);
+    const [totalPercent, setTotalPercent] = useState("");
 
     //Função para registro
     const register = async (username, email, password, repeatPass) => {
@@ -79,11 +81,12 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
+    //Função para pegar dados do usuário
     const getUser = async () => {
         const getUserAPI = 'https://exanalisys.onrender.com/api/users/profile';
 
         try {
-
+            setLoading(true)
             const res = await fetch(getUserAPI, {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -94,6 +97,7 @@ export const AuthProvider = ({ children }) => {
             const data = await res.json();
 
             if (res.ok) {
+                setLoading(false)
                 setUsuario(data);
             }
 
@@ -172,18 +176,29 @@ export const AuthProvider = ({ children }) => {
         const listAPI = 'https://exanalisys.onrender.com/api/users/list-expenses';
 
         try{
-
+            setLoading(true)
             const res = await fetch(listAPI, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-type': 'application/json'
                 },
                 
-            })
+            });
+
+            const data = await res.json();
+
+            if(res.ok){
+                setLoading(false);
+                setExpenses(data);
+            }
+            
 
         }
         catch(err){
             console.log(err)
+        }
+        finally{
+            setLoading(false);
         }
     }
 
@@ -208,7 +223,7 @@ export const AuthProvider = ({ children }) => {
             await loadUserFromStorage();
         };
         init();
-    })
+    }, []);
 
     useEffect(() => {
         if (token) {
@@ -228,7 +243,11 @@ export const AuthProvider = ({ children }) => {
             token,
             usuario,
             addBalance,
-            addExpenses
+            addExpenses,
+            listExpenses,
+            expenses,
+            setTotalPercent,
+            totalPercent
         }}>
 
             {children}

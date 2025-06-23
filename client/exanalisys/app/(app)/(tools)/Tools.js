@@ -1,7 +1,7 @@
 import { Text, View, TouchableOpacity } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Entypo from '@expo/vector-icons/Entypo';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { styles } from "./Tool.style";
 import { Link } from "expo-router"
 
@@ -22,7 +22,7 @@ export default function Tool(){
                     <Text style={styles.txt}>Add Gastos</Text>
                 </View>
 
-                {/* Botão para ver dashboard */}
+                 {/* Botão para ver dashboard */}
                 <View style={styles.localBotton}>
                     <TouchableOpacity
                         style={styles.botton}
@@ -32,17 +32,18 @@ export default function Tool(){
                     <Text style={styles.txt}>Dados </Text>
                 </View>
 
-                {/* Botão para ver a lista de gastos */}
+                {/* Botão para Simular gastos */}
                 <View style={styles.localBotton}>
-                    <Link href="/ListExpenses" asChild>
+                    <Link href="/Simulator" asChild>
                         <TouchableOpacity
                             style={styles.botton}
                         >
-                            <FontAwesome name="list-ul" size={50} color="#ADD9FF" />
+                            <MaterialIcons name="request-quote" size={50} color="#199BE2" />
                         </TouchableOpacity>
                     </Link>
-                    <Text style={styles.txt}>Lista de Gastos</Text>
+                    <Text style={styles.txt}>Simular Gastos</Text>
                 </View>
+
 
                 <View style={styles.localBotton}>
                     <TouchableOpacity

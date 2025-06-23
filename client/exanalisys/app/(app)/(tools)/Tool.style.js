@@ -3,7 +3,8 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     containerTools: {
         flexDirection: "row",
-        width: "100%"
+        width: "100%",
+        justifyContent: "space-between"
     },
     botton: {
         backgroundColor: "#092B48",
