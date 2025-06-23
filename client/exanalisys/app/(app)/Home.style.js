@@ -44,7 +44,7 @@ export const styles = StyleSheet.create({
         overflow: "hidden"
     },
     cardIcon: {
-        height: 110,
+        height: 140,
         marginTop: 50,
         backgroundColor: "#2C3A42",
         width: "90%",

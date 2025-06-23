@@ -15,9 +15,9 @@ export default function Menu(){
                     </TouchableOpacity>
                 </Link>
                 
-                <TouchableOpacity>
+                {/* <TouchableOpacity>
                     <AntDesign name="user" size={30} color="white" />
-                </TouchableOpacity>
+                </TouchableOpacity> */}
                 
             </View>
         </View>
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
         padding: 20,
         borderRadius: 15,
         flexDirection: "row",
-        justifyContent: "space-between"
+        justifyContent: "center"
     }
 })
 

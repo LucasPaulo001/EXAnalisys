@@ -33,14 +33,14 @@ export default function Simulator() {
     const [valueSimulate, setValueSimulate] = useState("");
     const [porcent, setPorcent] = useState("")
 
-    const { usuario } = useAuth();
+    const { usuario, totalPercent } = useAuth();
 
     let totalBalance = usuario.totalBalance
 
     //Função para calcular a simulação
     const simulate = (value) => {
         const valor = parseFloat(value);
-        const saldo = parseFloat(totalBalance || 0);
+        const saldo = parseFloat(totalPercent || totalBalance || 0);
         setValueSimulate((saldo - valor).toFixed(2));
         setPorcent(((value / saldo) * 100).toFixed(2));
         reset();

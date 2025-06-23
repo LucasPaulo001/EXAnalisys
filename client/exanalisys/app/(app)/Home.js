@@ -8,7 +8,7 @@ import { Redirect, Stack } from "expo-router";
 import { useAuth } from "../../contexts/authContext";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Modal from "./(modal)/Modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Menu from "../../components/menu/Menu";
 import LoadingSpinner from "../../components/menu/Loading";
 import CardData from "./(cardData)/CardData";
@@ -69,7 +69,10 @@ export default function Home() {
                                                 (
                                                     <LoadingSpinner />
                                                 ) : (
-                                                    totalPercent || usuario.totalBalance
+                                                    totalPercent && 
+                                                    `${totalPercent} (Após os gastos)`
+                                                    || 
+                                                    `${usuario.totalBalance} (saldo inicial)`
                                                 )}
                                     </Text>
                                     <TouchableOpacity

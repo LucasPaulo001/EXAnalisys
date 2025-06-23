@@ -21,14 +21,16 @@ export default function ListExpenses() {
         if (expenses.length > 0) {
             const total = expenses.reduce((acc, item) => {
                 return acc + parseFloat(item.value);
-            }, 0);
+            }, 0);  
+
+            //Calculos de saldo sobre os gastos
             setTotalExpenses(total.toFixed(2));
 
             const saldo = parseFloat(usuario.totalBalance) - total;
             setTotalPercent(saldo.toFixed(2));
         }
 
-    }, [expenses]);
+    }, [expenses, token]);
 
     const formatData = (data) => {
         const date = new Date(data);

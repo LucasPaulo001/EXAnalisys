@@ -23,14 +23,14 @@ export default function Tool(){
                 </View>
 
                  {/* Botão para ver dashboard */}
-                <View style={styles.localBotton}>
+                {/* <View style={styles.localBotton}>
                     <TouchableOpacity
                         style={styles.botton}
                     >
                         <Entypo name="area-graph" size={50} color="#199BE2" />
                     </TouchableOpacity>
                     <Text style={styles.txt}>Dados </Text>
-                </View>
+                </View> */}
 
                 {/* Botão para Simular gastos */}
                 <View style={styles.localBotton}>
@@ -45,14 +45,14 @@ export default function Tool(){
                 </View>
 
 
-                <View style={styles.localBotton}>
+                {/* <View style={styles.localBotton}>
                     <TouchableOpacity
                         style={styles.botton}
                     >
                         <Ionicons name="settings" size={50} color="#8FCAE6" />
                     </TouchableOpacity>
                     <Text style={styles.txt}>Config.</Text>
-                </View>
+                </View> */}
             </View>
         </View>
     )

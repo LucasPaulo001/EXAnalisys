@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
     containerTools: {
         flexDirection: "row",
         width: "100%",
-        justifyContent: "space-between"
+        justifyContent: "center"
     },
     botton: {
         backgroundColor: "#092B48",
@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
         alignContent: "center",
         alignItems: "center",
         margin: 10,
-        justifyContent: "space-between",
+        justifyContent: "center",
         textAlign: "center",
         flexDirection: "column",
     },
